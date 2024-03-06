@@ -16,5 +16,85 @@
 		"thumbnail": "no img",
 		"code": "007",
 		"stock": "12"
-	}
+	},
+	{
+        "Id": 3,
+        "title": "El Silmarillion",
+        "description": "El Silmarillion",
+        "price": 10200,
+        "thumbnail": "no img",
+        "code":  "021",
+        "stock":  "25"
+    },
+    {
+        "Id": 4,
+        "title": "Una Tierra Prometida",
+        "description": "",
+        "price": 6350,
+        "thumbnail": "no img",
+        "code": "017",
+        "stock": "17"
+    },
+    {
+        "Id": 5,
+        "title": "Los Hijos de Hurin",
+        "description": "",
+        "price": 4890,
+        "thumbnail": "no img",
+        "code": "042",
+        "stock": "6"
+    },
+    {
+        "Id": 6,
+        "title": "El Visitante",
+        "description": "",
+        "price": 4890,
+        "thumbnail": "no img",
+        "code":  "112",
+        "stock":  "14"
+    },
+    {
+        "Id": 7,
+        "title": "Sensatez y Sentimiento",
+        "description": "",
+        "price": 6350,
+        "thumbnail": "no img",
+        "code": "075",
+        "stock": "37"
+    },
+    {
+        "Id": 8,
+        "title": "Cumbres Borrascosas",
+        "description": "",
+        "price": 5720,
+        "thumbnail": "no img",
+        "code": "052",
+        "stock": "45"
+    },
+    {
+        "Id": 9,
+        "title": "El Retrato de Dorian Gray",
+        "description": "",
+        "price": 12450,
+        "thumbnail": "no img",
+        "code": "022",
+        "stock": "63"
+    },               
+    {
+        "Id": 10,
+        "title": "Alicia a través del Espejo",
+        "description": "Alicia a través del Espejo",
+		"price":9560,
+        "thumbnail": "no img",
+        "code":  "036",
+        "stock":  "6"
+    }   
 ]
+    
+    
+    
+
+    
+
+    
+   

@@ -25,18 +25,18 @@ app.get("/products.json", async (req, res) => {
 });
 
 
-//app.get("/products/:pid" , async (req, res) =>{
-//    try{
-//        const pid = parseInt(req.params.pid);
-//        const prod = await titulos.getProducts();
-//        const idFind = prod.find(prod => prod.id === pid);
-//
-//        if(idFind) return res.send(idFind);
-//    } catch (error){
-//        console.log(error, "No se encontro el producto");
-//
-//        return;
-//}})
+app.get("/products/:pid" , async (req, res) =>{
+    try{
+        const pid = parseInt(req.params.pid);
+        const prod = await titulos.getProducts();
+        const idFind = prod.find(prod => prod.id === pid);
+
+        if(idFind) return res.send(idFind);
+    } catch (error){
+        console.log(error, "No se encontro el producto");
+
+        return;
+}})
 
 const PORT = 8080;
 const server = app.listen(PORT, () =>{
