@@ -7,7 +7,20 @@ const ProductRouter = Router()
 const product = new ProductManager();
 
 ProductRouter.get("/", async (req, res) => {
-    res.send (await product.getproducts())
+    try{
+        let limit = parseInt(req.query.limit);
+        console.log(limit);
+        let allProducts = await product.getproducts();
+
+        if(limit){
+            allProducts = allProducts.slice(0, limit);
+        }
+        res.send(allProducts);
+        
+    }catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
 })
 
 ProductRouter.get("/:id", async (req, res) => {
@@ -16,18 +29,9 @@ ProductRouter.get("/:id", async (req, res) => {
 })
 
 ProductRouter.post("/", async (req, res) => {
-    let newProduct = { 
-    id: nanoid(),
-    title: req.body.title,
-    description: req.body.description,
-    code: req.body.code,
-    price: req.body.price,
-    status: true,
-    stock: req.body.stock,
-    category: req.body.category,
-    thumbnails: req.body.thumbnails
-    }
+    let newProduct = req.body
     res.send (await product.addProducts(newProduct))
+    console.log(req.body)
 })
 
 ProductRouter.put("/:id", async (req, res) => {

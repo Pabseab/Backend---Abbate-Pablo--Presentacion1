@@ -41,12 +41,21 @@ class CartManager {
     addProductInCart = async (cartId, productId) => {
         let cartById = await this.exist(cartId)
         if(!cartById) return "Carrito no encontrado"
+
         let productById =await productAll.exist(productId)
-        if(!cartById) return "Producto no encontrado"
+        if(!productById) return "Producto no encontrado"
+        
         let cartAll = await this.readCarts()
-        let cartfilter = cartAll.filter(prod => prod.id != productId)
-        let cartConcat = [{id:cartId, products : [{id:productById.id, cantidad: 1, ...cartfilter}]}]
-        await this.writeCarts(cartConcat)
+        let cart = cartAll.find(cart => cart.id === cartId);  
+        
+        let existingProduct = cart.products.find(product => product.id === productId)
+            if (existingProduct){
+                    existingProduct.quantity++;
+            }else{
+                cart.products.push({id:productId, quantity: 1})
+            }
+
+        await this.writeCarts(cartAll)
         return "Produto Agregado al Carrito"
     }
 }
