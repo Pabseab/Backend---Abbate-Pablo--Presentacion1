@@ -1,5 +1,117 @@
-<h1>hola</h1>
-{(>chat)}
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/realTimeProducts.js"></script>
+<main>
+      <div class="container">
+      <h1>Agregar Productos</h1>
+      </div>
+      <div class="container">
+        <form action="products" method="post">
+          <br />
+          <label>Nombre del Producto</label>
+          <br/>
+          <input type="text" name="title" id="title" />
+          <br/>
+          <label>Descripción del producto</label>
+          <br/>
+          <input type="description" name="description" id="description" />
+          <br/>
+          <label>Precio</label>
+          <br/>
+          <input type="price" name="price" id="price" />
+          <br/>
+          <label class="file-label" for="thumbnail">Cargar una imagen</label>
+          <br/>
+          <input type="thumbnail" name="thumbnail" id="thumbnail" />
+          <br/>
+          <label>Codigo</label>
+          <br/>
+          <input type="code" name="code" id="code" />
+          <br/>
+          <label>Cantidad</label>
+          <br/>
+          <input type="stock" name="stock" id="stock" />
+          <br/>
+          <br/>
+          <input id="button" type="submit" value="Agregar Producto" />
+        </form> 
+      </div>
+      
+      <div class="container">
+        <br/>
+        <h2>Lista de Productos</h2>
+          <br/>
+          <table class="container">
+            <tbody class="row" id="products">
+                {{#each products}}
+                  <tr>
+                    <td>{{id}}</td>
+                    <td>{{title}}</td>
+                    <td>{{#if status}} Activo {{else}} Inactivo {{/if}}</td>
+                    <td>{{description}}</td>
+                    <td>{{price}}</td>
+                    <td>
+                    {{#if this.thumbnails.length}}
+                        <img src="{{this.thumbnails.[0]}}" alt="Imagen del producto">
+                    {{else}}
+                        Sin imagen
+                    {{/if}}
+                    </td>
+                    <td>{{this.code}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>{{this.category}}</td>
+                  </tr>
+                {{/each}}
+            </tbody>
+          </table>
+      </div>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        socket.emit("getProducts")
+
+        socket.on("products", (products) => { 
+          console.log(products);
+         const productsContainer = document.getElementById("products");
+          let productHTML= "";
+
+
+          products.forEach((product) => {
+          productHTML +=`
+            <div class="col-2">
+              <div class="cards">
+                <img class="productThumbnail" src="${product.thumbnails}" alt="Image for ${product.title}">
+                <div class="productDetails">
+                  <p class="productTitle">Titulo: ${product.title}</p>
+                  <p class="productTitle">Descripcion: ${product.description}</p>
+                  <p class="productTitle">Precio: ${product.price}</p>
+                  <p class="productTitle">Codigo: ${product.code}</p>
+                  <p class="productTitle">Stock: ${product.stock}</p>  
+                </div>
+              </div>
+            </div>
+           `;
+          });
+
+   productsContainer.innerHTML = productHTML;
+
+   
+  })  
+
+    </script>
+
+      <!--<div class="box">
+        <br />
+        <form action="http://localhost:8080/carts" method="get">
+          <input id="checkCartButton" type="submit" value="Ver Carrito" />
+        </form>
+      </div> -->
+
+</main>
+
+
+
+
+

@@ -1,3 +1,28 @@
 body {
-    background-color: beige;
+    background: beige;
+    color: black;
+}
+
+hr {
+    width:100%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    background-color: white;
+    color: black;
+}
+
+.cards{
+    border-style: groove;
+    border-color: black;
+    background-color: white;
+    margin-bottom: 35px;
+
 }
